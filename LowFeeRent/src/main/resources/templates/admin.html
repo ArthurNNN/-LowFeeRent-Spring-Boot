@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" th:href="@{/css/w3.css}">
+<link rel="stylesheet" th:href="@{/css/css.css}">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" />
+<body>
+
+
+
+
+	<!-- Cart info -->
+	<div id="id02" class="w3-modal">
+		<div class="w3-modal-content">
+			<div class="w3-container">
+				<span onclick="document.getElementById('id02').style.display='none'"
+					class="w3-button w3-display-topright">&times;</span>
+				<p>Your id session is: 15611354BGET5GG</p>
+				<p>Your name is: Alan Smith</p>
+				<p>Status: CREATED</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Content Section -->
+	<section layout:fragment="content">
+		<p>This is filled by the content template.</p>
+	</section>
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="footer">
+			<p>2021 Java Spring with Layout Thymeleaf. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Optional Section -->
+	<th:block layout:fragment="optional" />
+
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>
+</html>
