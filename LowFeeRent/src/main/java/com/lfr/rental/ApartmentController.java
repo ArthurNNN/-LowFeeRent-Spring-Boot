@@ -31,12 +31,12 @@ public class ApartmentController {
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
 
 			Map<LocalDate, LocalDate> datesMap = new HashMap<LocalDate, LocalDate>();
-			datesMap.put(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
-			datesMap.put(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
-			datesMap.put(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(3, 5), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(1, 3), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(6, 9), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(5, 6), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(10, 13), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(9, 10), Utils.randRange(1, 28)));
 			
 			System.out.println(datesMap);
 			apartment.setOpenDates(datesMap);

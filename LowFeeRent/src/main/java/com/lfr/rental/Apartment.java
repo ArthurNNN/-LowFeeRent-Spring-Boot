@@ -29,8 +29,9 @@ public class Apartment {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
 	@ElementCollection
-	@MapKeyColumn(name = "start")
-	@Column(name = "end")
+	@Column(name = "start")
+	@MapKeyColumn(name = "end")
+
 	Map<LocalDate, LocalDate> openDates;
 	
 	@OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)

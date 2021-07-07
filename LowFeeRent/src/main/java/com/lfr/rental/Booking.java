@@ -33,7 +33,7 @@ public class Booking {
 	Person person;
 	
 	@ManyToOne
-	@JoinColumn(name = "BOOKING_FID")
+	@JoinColumn(name = "APARTMENT_FID")
 	Apartment apartment;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
