@@ -1,7 +1,12 @@
 package com.lfr.rental;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.lfr.utils.*;
@@ -9,13 +14,15 @@ import com.lfr.utils.*;
 @Entity
 @Table
 public class Person {
-	
+
 	@Id
 	private String id;
 	private String name;
 	private String surname;
 	private String email;
-	
+
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+	private List<Booking> bookings = new ArrayList<Booking>();
 
 //	private BankAccount bankAccount;
 
@@ -25,8 +32,8 @@ public class Person {
 	}
 
 	public Person(String name, String surname, String email
-			// , BankAccount bankAccount
-			) {
+	// , BankAccount bankAccount
+	) {
 		super();
 		this.setId();
 		this.name = name;
@@ -35,11 +42,19 @@ public class Person {
 //		this.bankAccount = bankAccount;
 	}
 
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void addBooking(Booking booking) {
+		this.bookings.add(booking);
+		booking.setPerson(this);
+	}
 
 	public String getId() {
 		return id;
 	}
-	
+
 	public String setId() {
 		return this.id = "u" + Utils.generateId();
 	}
@@ -51,8 +66,6 @@ public class Person {
 //	public void setBankAccount(BankAccount bankAccount) {
 //		this.bankAccount = bankAccount;
 //	}
-	
-	
 
 	public String getEmail() {
 		return email;
@@ -80,13 +93,9 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + 
-			//	", bankAccount="				+ bankAccount + 
+		return "Person [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email +
+		// ", bankAccount=" + bankAccount +
 				"]";
 	}
-
-
-
-
 
 }

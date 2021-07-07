@@ -22,7 +22,7 @@ public class ApartmentController {
 	@Autowired
 	ApartmentRepository apartmentRepository;
 
-	@RequestMapping("/fillin100apartments")
+	@RequestMapping("/fillin32apartments")
 	public String fillApartments(Model boxToView) {
 		Faker faker = new Faker();
 		int n = 1;
@@ -75,7 +75,7 @@ public class ApartmentController {
 
 	// -----------------------update----------------------------------
 	@RequestMapping("/updateApartment")
-	public String updateApartment(int id, Model model) {
+	public String updateApartment(String id, Model model) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -90,7 +90,7 @@ public class ApartmentController {
 	}
 
 	@PostMapping("/replaceApartment/{idFromView}")
-	public String replaceApartment(@PathVariable("idFromView") int id, Apartment apartment) {
+	public String replaceApartment(@PathVariable("idFromView") String id, Apartment apartment) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -106,6 +106,8 @@ public class ApartmentController {
 				apartmentFound.get().setRooms(apartment.getRooms());
 			if (apartment.getBathrooms() != 0)
 				apartmentFound.get().setBathrooms(apartment.getBathrooms());
+			if (apartment.getLessorId() != null)
+				apartmentFound.get().setLessorId(apartment.getLessorId());
 
 			apartmentRepository.save(apartmentFound.get());
 			return "redirect:/apartment/allApartments";
@@ -117,7 +119,7 @@ public class ApartmentController {
 
 	// -----------------------detail----------------------------------
 	@RequestMapping("/detailApartment")
-	public String detailApartment(int id, Model model) {
+	public String detailApartment(String id, Model model) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -133,12 +135,12 @@ public class ApartmentController {
 
 	// -----------------------delete----------------------------------
 	@RequestMapping("/deleteApartment")
-	public String removeApartment(int id, Model model) {
+	public String removeApartment(String id, Model model) {
 
-		// System.out.println("inside removeApartment" + id);
+		 System.out.println("inside removeApartment" + id);
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
-		// System.out.println("find inside removeApartment" + apartmentFound.get());
+		 System.out.println("find inside removeApartment" + apartmentFound.get());
 
 		if (apartmentFound.isPresent()) {
 
@@ -151,7 +153,7 @@ public class ApartmentController {
 			model.addAttribute("message", "error");
 		}
 
-		// System.out.println("finishing removeApartment" + id);
+		 System.out.println("finishing removeApartment" + id);
 		return "deletedapartment.html";
 	}
 

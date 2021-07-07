@@ -1,58 +1,76 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout}">
-
+<head>
+<title>Welcome to my Spring Boot Project</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" th:href="@{/css/w3.css}">
-<link rel="stylesheet" th:href="@{/css/css.css}">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" />
+<head>
+<title>Welcome to our site</title>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+#myInput {
+	background-image: url('/css/searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	width: 50%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+</style>
+</head>
 
 <body>
-
 
 	<div layout:fragment="content">
 
 		<div class="w3-container w3-margin">
-			<p>Apartments table</p>
+			<p>employees table</p>
 			<input type="text" id="myInput" onkeyup="myFunction()"
 				placeholder="Search for anything.." title="Type in a name">
 		</div>
-		<table class="w3-table-all" id="myTable">
+
+		<table id="myTable"
+			class="w3-table-all w3-card-4 w3-padding-64 w3-margin"
+			style="width: 80%">
 			<tr class="w3-black w3-hover-teal">
 				<td>id</td>
-				<td>lessorId</td>
-				<td>openDates</td>
-				<td>price</td>
-				<td>area</td>
-				<td>rooms</td>
-				<td>bathrooms</td>
-				<td>address</td>
-				<td>operations</td>
+				<td>name</td>
+				<td>surname</td>
+				<td>age</td>
+				<td>email</td>
+				<td>salary</td>
+				<td>password</td>
+				<td>actions</td>
 			</tr>
-			<tr th:each="apartment:${apartmentList}">
-				<td th:text="${apartment.id}"></td>
-				<td th:text="${apartment.lessorId}"></td>
-				<td th:text="${apartment.openDates}"></td>
-				<td th:text="${apartment.price}"></td>
-				<td th:text="${apartment.area}"></td>
-				<td th:text="${apartment.rooms}"></td>
-				<td th:text="${apartment.bathrooms}"></td>
-				<td th:text="${apartment.address}"></td>
+			<tr th:each="employee:${employeeListfromControllerAndDB}">
 
-				<td><a th:href="@{deleteApartment(id=${apartment.id})}"
-					class="w3-button w3-red">Delete</a> <a
-					th:href="@{detailApartment(id=${apartment.id})}"
-					class="w3-button w3-teal">Detail</a> <a
-					th:href="@{updateApartment(id=${apartment.id})}"
-					class="w3-button w3-blue">Update</a></td>
+				<td th:text="${employee.id}"></td>
+				<td th:text="${employee.name}"></td>
+				<td th:text="${employee.surname}"></td>
+				<td th:text="${employee.age}"></td>
+				<td th:text="${employee.email}"></td>
+				<td th:text="${employee.monthSalary}"></td>
+				<td th:text="${employee.password}"></td>
+
+				<td><a th:href="@{deleteEmployee(id=${employee.id})}"
+					class="w3-button w3-small w3-red">Delete</a> <a
+					th:href="@{detailEmployee(id=${employee.id})}"
+					class="w3-button w3-small w3-teal">Detail</a> <a
+					th:href="@{updateEmployee(id=${employee.id})}"
+					class="w3-button w3-small w3-blue">Update</a></td>
+
 
 			</tr>
 		</table>
@@ -81,4 +99,6 @@
 			}
 		</script>
 	</div>
+
+</body>
 </html>

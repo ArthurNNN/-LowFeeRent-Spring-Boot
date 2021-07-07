@@ -93,7 +93,8 @@
 						<!-- 						</div> -->
 					</div>
 					<div class="w3-row-padding w3-right">
-						<button class="w3-button w3-black w3-center w3-margin-top" type="submit">
+						<button class="w3-button w3-black w3-center w3-margin-top"
+							type="submit">
 							<i class="fa fa-search w3-margin-rigth"></i> Search availability
 						</button>
 					</div>
@@ -174,23 +175,23 @@
 			<table class="w3-table-all" id="myTable">
 				<tr class="w3-black w3-hover-teal">
 					<td>id</td>
-					<td>personId</td>
 					<td>openDates</td>
 					<td>price</td>
 					<td>area</td>
 					<td>rooms</td>
 					<td>bathrooms</td>
 					<td>address</td>
+					<td>lessorId</td>
 				</tr>
 				<tr th:each="apartment:${apartmentList}">
 					<td th:text="${apartment.id}"></td>
-					<td th:text="${apartment.personId}"></td>
 					<td th:text="${apartment.openDates}"></td>
 					<td th:text="${apartment.price}"></td>
 					<td th:text="${apartment.area}"></td>
 					<td th:text="${apartment.rooms}"></td>
 					<td th:text="${apartment.bathrooms}"></td>
 					<td th:text="${apartment.address}"></td>
+					<td th:text="${apartment.lessorId}"></td>
 				</tr>
 			</table>
 

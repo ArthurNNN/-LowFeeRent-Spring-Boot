@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,15 +23,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Apartment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	String id;
-	String personId;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
 	@ElementCollection
-	@MapKeyColumn(name = "checkin")
-	@Column(name = "checkout")
+	@MapKeyColumn(name = "start")
+	@Column(name = "end")
 	Map<LocalDate, LocalDate> openDates;
+	
+	@OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
+	private List<Booking> bookings = new ArrayList<Booking>();
 
 	@Column(name = "price")
 	int price;
@@ -40,6 +45,7 @@ public class Apartment {
 	@Column(name = "bathrooms")
 	int bathrooms;
 	String address;
+	String lessorId;
 
 	private static int counter;
 
@@ -79,14 +85,25 @@ public class Apartment {
 		this.id = "a" + part + Apartment.getNumOfInstances();
 
 	}
+	
+	
 
-	public String getPersonId() {
-
-		return personId;
+	public List<Booking> getBookings() {
+		return bookings;
 	}
 
-	public void setPersonId(String personId) {
-		this.personId = personId;
+	public void addBooking(Booking booking) {
+		this.bookings.add(booking);
+		booking.setApartment(this);
+	}
+
+	public String getLessorId() {
+
+		return lessorId;
+	}
+
+	public void setLessorId(String lessorId) {
+		this.lessorId = lessorId;
 	}
 
 	public String getAddress() {
@@ -139,7 +156,7 @@ public class Apartment {
 
 	@Override
 	public String toString() {
-		return "Apartment [id=" + id + ", personId=" + personId +
+		return "Apartment [id=" + id + ", lessorId=" + lessorId +
 		 ", openDates=" + openDates +
 				", price=" + price + ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address="
 				+ address + "]";
