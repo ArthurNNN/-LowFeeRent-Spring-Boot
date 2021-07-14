@@ -20,7 +20,7 @@ public class BookingController {
 
 		boxToView.addAttribute("requestList", bookingRepository.findAll());
 
-		return "home.html";
+		return "home";
 	}
 
 

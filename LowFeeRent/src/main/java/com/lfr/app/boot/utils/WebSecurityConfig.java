@@ -1,4 +1,4 @@
-package com.lfr.app.boot.controller;
+package com.lfr.app.boot.utils;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

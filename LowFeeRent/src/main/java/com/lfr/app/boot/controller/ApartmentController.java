@@ -56,7 +56,7 @@ public class ApartmentController {
 	@RequestMapping("/newApartment")
 	public String newApartment() {
 
-		return "newapartment.html";
+		return "newapartment";
 	}
 
 	@RequestMapping("/addApartment")
@@ -72,7 +72,7 @@ public class ApartmentController {
 
 		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
-		return "apartment.html";
+		return "apartment";
 	}
 
 	// -----------------------update----------------------------------
@@ -88,7 +88,7 @@ public class ApartmentController {
 		}
 
 		else
-			return "notfound.html";
+			return "notfound";
 	}
 
 	@PostMapping("/replaceApartment/{idFromView}")
@@ -115,7 +115,7 @@ public class ApartmentController {
 			return "redirect:/apartment/allApartments";
 
 		} else
-			return "notfound.html";
+			return "notfound";
 
 	}
 
@@ -132,7 +132,7 @@ public class ApartmentController {
 		}
 
 		else
-			return "notfound.html";
+			return "notfound";
 	}
 
 	// -----------------------delete----------------------------------
@@ -156,7 +156,7 @@ public class ApartmentController {
 		}
 
 		 System.out.println("finishing removeApartment" + id);
-		return "deletedapartment.html";
+		return "deletedapartment";
 	}
 
 	@RequestMapping("/deleteAllApartments")

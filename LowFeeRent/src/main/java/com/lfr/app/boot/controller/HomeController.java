@@ -64,7 +64,7 @@ public class HomeController {
 		boxToView.addAttribute("apartmentList",
 				apartmentRepository.fetchApartments(checkin, checkout, price, area, rooms, bathrooms));
 
-		return "lowfeerent.html";
+		return "home";
 	}
 
 	@RequestMapping("/admin")
@@ -72,7 +72,7 @@ public class HomeController {
 
 		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
-		return "admin.html";
+		return "admin";
 	}
 
 }

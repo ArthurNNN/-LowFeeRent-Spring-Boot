@@ -22,7 +22,7 @@ public class BankAccountController {
 
 		boxToView.addAttribute("bankAccountListfromControllerAndDB", bankAccountRepository.findAll());
 
-		return "bankAccounts.html";
+		return "bankAccounts";
 	}
 
 	@RequestMapping("/fillBankAccounts")
@@ -44,7 +44,7 @@ public class BankAccountController {
 
 		boxToView.addAttribute("bankAccountListfromControllerAndDB", bankAccountRepository.findAll());
 
-		return "bankAccounts.html";
+		return "bankAccounts";
 	}
 
 }
