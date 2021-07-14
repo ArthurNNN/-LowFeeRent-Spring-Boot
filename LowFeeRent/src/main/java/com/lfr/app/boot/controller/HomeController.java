@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app.boot.controller;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.javafaker.Faker;
-import com.lfr.utils.Utils;
+import com.lfr.app.boot.model.Apartment;
+import com.lfr.app.boot.model.Request;
+import com.lfr.app.boot.utils.Utils;
+import com.lfr.app.repository.ApartmentRepository;
+import com.lfr.app.repository.RequestRepository;
 
 @Controller
 @RequestMapping("/")
@@ -49,12 +53,12 @@ public class HomeController {
 			isFirstRender = false;
 		}
 
-		LocalDate checkin = req.checkin != null ? req.checkin : LocalDate.now();
-		LocalDate checkout = req.checkout != null ? req.checkout : LocalDate.now();
-		Integer price = req.priceMax != null ? req.priceMax : 5000;
-		Integer area = req.areaMin != null ? req.areaMin : 0;
-		Integer rooms = req.roomsMin != null ? req.roomsMin : 0;
-		Integer bathrooms = req.bathroomsMin != null ? req.bathroomsMin : 0;
+		LocalDate checkin = req.getCheckin() != null ? req.getCheckin() : LocalDate.now();
+		LocalDate checkout = req.getCheckout() != null ? req.getCheckout() : LocalDate.now();
+		Integer price = req.getPriceMax() != null ? req.getPriceMax() : 5000;
+		Integer area = req.getAreaMin() != null ? req.getAreaMin() : 0;
+		Integer rooms = req.getRoomsMin() != null ? req.getRoomsMin() : 0;
+		Integer bathrooms = req.getBathroomsMin() != null ? req.getBathroomsMin() : 0;
 
 		boxToView.addAttribute("requestFromController", new Request(checkin, checkout, price, area, rooms, bathrooms));
 		boxToView.addAttribute("apartmentList",

@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app.boot.model;
 
 import java.time.LocalDate;
 import java.util.List;

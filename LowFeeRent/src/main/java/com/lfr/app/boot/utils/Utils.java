@@ -1,4 +1,4 @@
-package com.lfr.utils;
+package com.lfr.app.boot.utils;
 
 import java.util.Random;
 

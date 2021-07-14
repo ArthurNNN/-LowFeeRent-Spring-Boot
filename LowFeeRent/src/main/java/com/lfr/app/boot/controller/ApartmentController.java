@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app.boot.controller;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.javafaker.Faker;
-import com.lfr.utils.Utils;
+import com.lfr.app.boot.model.Apartment;
+import com.lfr.app.boot.utils.Utils;
+import com.lfr.app.repository.ApartmentRepository;
 
 @Controller
 @RequestMapping("/apartment")

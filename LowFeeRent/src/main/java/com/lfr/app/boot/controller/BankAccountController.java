@@ -1,11 +1,13 @@
-package com.lfr.person;
+package com.lfr.app.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.github.javafaker.Faker;
-import com.lfr.utils.Utils;
+import com.lfr.app.boot.model.BankAccount;
+import com.lfr.app.boot.utils.Utils;
+import com.lfr.app.repository.BankAccountRepository;
 
 
 @Controller

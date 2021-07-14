@@ -1,4 +1,4 @@
-package com.lfr.person;
+package com.lfr.app.boot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

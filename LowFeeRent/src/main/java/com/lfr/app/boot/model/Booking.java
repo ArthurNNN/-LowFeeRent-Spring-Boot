@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app.boot.model;
 
 import java.time.LocalDate;
 //import java.util.Date;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.lfr.utils.Utils;
+import com.lfr.app.boot.utils.Utils;
 
 @Entity
 @Table

@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

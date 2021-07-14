@@ -1,4 +1,4 @@
-package com.lfr.rental;
+package com.lfr.app.boot.controller;
 
 import java.util.Optional;
 
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.github.javafaker.Faker;
+import com.lfr.app.boot.model.Person;
+import com.lfr.app.repository.PersonRepository;
 
 @Controller
 @RequestMapping("/person")
