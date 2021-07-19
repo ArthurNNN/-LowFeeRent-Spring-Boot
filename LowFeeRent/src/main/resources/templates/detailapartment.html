@@ -37,11 +37,13 @@
 
 				<br>
 				<p th:text="'address: ' +${apartment.address}"></p>
+				<img th:src="@{../img/a/}+${apartment.id % 33}+@{.jpg}"
+					alt="Apartment Image" style="width: 100%">
 				<p th:text="'openDates: ' +${apartment.openDates}"></p>
 				<p th:text="'area: ' +${apartment.area}"></p>
 				<p th:text="'rooms: ' +${apartment.rooms}"></p>
 				<p th:text="'bathrooms: ' +${apartment.bathrooms}"></p>
-				<p th:text="'personId: ' +${apartment.personId}"></p>
+				<!-- 				<p th:text="'personId: ' +${apartment.personId}"></p> -->
 
 				<hr>
 				<div class="w3-container w3-center">

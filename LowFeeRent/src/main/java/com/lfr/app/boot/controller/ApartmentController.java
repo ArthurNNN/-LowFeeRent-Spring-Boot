@@ -25,31 +25,41 @@ public class ApartmentController {
 	ApartmentRepository apartmentRepository;
 
 	@RequestMapping("/fillin32apartments")
-	public String fillApartments(Model boxToView) {
+	public String fillInApartments(Model boxToView) {
+		apartmentRepository = fillInRandomApt(apartmentRepository, 32);
+
+		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
+
+		return "redirect:/apartment/allApartments";
+	}
+
+	protected static ApartmentRepository fillInRandomApt(ApartmentRepository apartmentRepository, int qt) {
 		Faker faker = new Faker();
 		int n = 1;
-		while (n <= 32) {
+		while (n <= qt) {
 			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
+			System.out.println(apartment);
+			
+			apartment.setImgUrl("../a/" + (apartment.id % 33) + ".jpg");
+			System.out.println(apartment);
+			
 
 			Map<LocalDate, LocalDate> datesMap = new HashMap<LocalDate, LocalDate>();
-			datesMap.put(LocalDate.of(2021, Utils.randRange(3, 5), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(1, 3), Utils.randRange(1, 28)));
-			datesMap.put(LocalDate.of(2021, Utils.randRange(6, 9), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(5, 6), Utils.randRange(1, 28)));
-			datesMap.put(LocalDate.of(2021, Utils.randRange(10, 13), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(9, 10), Utils.randRange(1, 28)));
-			
+			datesMap.put(LocalDate.of(2021, Utils.randRange(1, 3), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(3, 5), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(5, 6), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(6, 9), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(9, 10), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(10, 13), Utils.randRange(1, 28)));
+
 			System.out.println(datesMap);
 			apartment.setOpenDates(datesMap);
 
 			apartmentRepository.save(apartment);
 			n++;
 		}
-
-		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
-
-		return "redirect:/apartment/allApartments";
+		return apartmentRepository;
 	}
 
 	// -----------------------add----------------------------------
@@ -77,7 +87,7 @@ public class ApartmentController {
 
 	// -----------------------update----------------------------------
 	@RequestMapping("/updateApartment")
-	public String updateApartment(String id, Model model) {
+	public String updateApartment(int id, Model model) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -92,7 +102,7 @@ public class ApartmentController {
 	}
 
 	@PostMapping("/replaceApartment/{idFromView}")
-	public String replaceApartment(@PathVariable("idFromView") String id, Apartment apartment) {
+	public String replaceApartment(@PathVariable("idFromView") int id, Apartment apartment) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -121,7 +131,7 @@ public class ApartmentController {
 
 	// -----------------------detail----------------------------------
 	@RequestMapping("/detailApartment")
-	public String detailApartment(String id, Model model) {
+	public String detailApartment(int id, Model model) {
 
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
@@ -137,12 +147,12 @@ public class ApartmentController {
 
 	// -----------------------delete----------------------------------
 	@RequestMapping("/deleteApartment")
-	public String removeApartment(String id, Model model) {
+	public String removeApartment(int id, Model model) {
 
-		 System.out.println("inside removeApartment" + id);
+		System.out.println("inside removeApartment" + id);
 		Optional<Apartment> apartmentFound = apartmentRepository.findById(id);
 
-		 System.out.println("find inside removeApartment" + apartmentFound.get());
+		System.out.println("find inside removeApartment" + apartmentFound.get());
 
 		if (apartmentFound.isPresent()) {
 
@@ -155,7 +165,7 @@ public class ApartmentController {
 			model.addAttribute("message", "error");
 		}
 
-		 System.out.println("finishing removeApartment" + id);
+		System.out.println("finishing removeApartment" + id);
 		return "deletedapartment";
 	}
 

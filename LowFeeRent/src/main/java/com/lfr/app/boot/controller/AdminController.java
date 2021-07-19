@@ -16,11 +16,11 @@ public class AdminController {
 //	@Autowired
 //	ApartmentRepository apartmentRepository;
 
-	@Autowired
-	PersonRepository personRepository;
-
-	@Autowired
-	BookingRepository bookingRepository;
+//	@Autowired
+//	PersonRepository personRepository;
+//
+//	@Autowired
+//	BookingRepository bookingRepository;
 
 //	@RequestMapping("/")
 //	public String getAdminConsole(Model boxToView) {
@@ -28,7 +28,7 @@ public class AdminController {
 //
 //		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
 //
-//		return "admin.html";
+//		return "home/admin";
 //	}
 
 	
@@ -65,7 +65,7 @@ public class AdminController {
 //
 //		}
 
-		boxToView.addAttribute("bookingListfromControllerAndDB", bookingRepository.findAll());
+//		boxToView.addAttribute("bookingListfromControllerAndDB", bookingRepository.findAll());
 
 		return "redirect:/admin";
 	}

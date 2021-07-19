@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -12,14 +14,16 @@ import javax.persistence.Table;
 import com.lfr.app.boot.utils.*;
 
 @Entity
-@Table
+@Table(name = "person")
 public class Person {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
 	private String surname;
 	private String email;
+	
 
 	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
 	private List<Booking> bookings = new ArrayList<Booking>();
@@ -28,14 +32,12 @@ public class Person {
 
 	public Person() {
 		super();
-		this.setId();
 	}
 
 	public Person(String name, String surname, String email
 	// , BankAccount bankAccount
 	) {
 		super();
-		this.setId();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -51,12 +53,12 @@ public class Person {
 		booking.setPerson(this);
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public String setId() {
-		return this.id = "u" + Utils.generateId();
+	public void setId(int id) {
+		this.id = id;
 	}
 
 //	public BankAccount getBankAccount() {

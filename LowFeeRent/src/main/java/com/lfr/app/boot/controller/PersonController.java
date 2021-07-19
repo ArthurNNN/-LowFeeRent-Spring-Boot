@@ -28,7 +28,7 @@ public class PersonController {
 	}
 
 	@RequestMapping("/fillIn10Persons")
-	public String fillAllPersons(Model boxToView) {
+	public String fillInPersons(Model boxToView) {
 
 		Faker faker = new Faker();
 
@@ -44,7 +44,6 @@ public class PersonController {
 			System.out.print("\n#" + n + " ");
 			System.out.print(person);
 			n++;
-
 		}
 
 		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
@@ -54,7 +53,7 @@ public class PersonController {
 
 	// -----------------------delete----------------------------------
 	@RequestMapping("/deletePerson")
-	public String removePerson(String id, Model model) {
+	public String removePerson(int id, Model model) {
 
 		System.out.println("inside removePerson" + id);
 		Optional<Person> personFound = personRepository.findById(id);
@@ -87,7 +86,7 @@ public class PersonController {
 
 	// -----------------------update----------------------------------
 	@RequestMapping("/updatePerson")
-	public String updateEmpoyee(String id, Model model) {
+	public String updateEmpoyee(int id, Model model) {
 
 		Optional<Person> personFound = findOnePersonById(id);
 
@@ -102,7 +101,7 @@ public class PersonController {
 	}
 
 	@PostMapping("/replacePerson/{idFromView}")
-	public String replacePerson(@PathVariable("idFromView") String id, Person person) {
+	public String replacePerson(@PathVariable("idFromView") int id, Person person) {
 
 		Optional<Person> personFound = findOnePersonById(id);
 
@@ -131,7 +130,7 @@ public class PersonController {
 
 	// -----------------------detail----------------------------------
 	@RequestMapping("/detailPerson")
-	public String detailEmpoyee(String id, Model model) {
+	public String detailEmpoyee(int id, Model model) {
 
 		Optional<Person> personFound = findOnePersonById(id);
 
@@ -150,12 +149,10 @@ public class PersonController {
 	// --------------------------------
 	// --------------------------------------------------------------------------------
 
-	public Optional<Person> findOnePersonById(String id) {
+	public Optional<Person> findOnePersonById(int id) {
 
-		// System.out.println("inside findPerson" + id);
 		Optional<Person> personFound = personRepository.findById(id);
-		// System.out.println("finishing findPerson" + id);
-		// System.out.println("finishing findPerson" + personFound.get());
+
 		return personFound;
 	}
 

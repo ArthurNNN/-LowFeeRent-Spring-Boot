@@ -26,25 +26,29 @@
 				<tr class="w3-black w3-hover-teal">
 					<td>id</td>
 					<td>personId</td>
+					<td>apartmentId</td>
 					<td>checkin</td>
 					<td>checkout</td>
 					<td>nights</td>
 					<td>amounts</td>
+					<td>operations</td>
 				</tr>
 
 				<tr th:each="booking:${bookingListfromControllerAndDB}">
 					<td th:text="${booking.id}"></td>
-					<td th:text="${booking.personId}"></td>
+					<td ><a th:text="${booking.person.id}" th:href="@{../person/detailPerson(id=${booking.id})}" target="_blank" class="w3-button w3-blue"></a></td>
+<!-- 					<td th:text="${booking.apartment.id}"></td> -->
+					<td ><a th:text="${booking.apartment.id}" th:href="@{../apartment/detailApartment(id=${booking.id})}" target="_blank" class="w3-button w3-green"></a></td>
 					<td th:text="${booking.checkin}"></td>
 					<td th:text="${booking.checkout}"></td>
 					<td th:text="${booking.nights}"></td>
-					<td th:text="${booking.amount}"></td>
+					<td th:text="${booking.amount}+'€'"></td>
 
-					<td><a th:href="@{deleteApartment(id=${apartment.id})}"
+					<td><a th:href="@{deleteBooking(id=${booking.id})}"
 						class="w3-button w3-red">Delete</a> <a
-						th:href="@{detailApartment(id=${apartment.id})}"
+						th:href="@{detailBooking(id=${booking.id})}"
 						class="w3-button w3-teal">Detail</a> <a
-						th:href="@{updateApartment(id=${apartment.id})}"
+						th:href="@{updateBooking(id=${booking.id})}"
 						class="w3-button w3-blue">Update</a></td>
 
 				</tr>

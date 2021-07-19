@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.lfr.app.boot.model.Apartment;
 
-public interface ApartmentRepository extends CrudRepository<Apartment, String> {
+public interface ApartmentRepository extends CrudRepository<Apartment, Integer> {
 
 	@Query("select a from Apartment a join a.openDates od"
 			+ " where (key(od) <= :checkin and od >= :checkout) "

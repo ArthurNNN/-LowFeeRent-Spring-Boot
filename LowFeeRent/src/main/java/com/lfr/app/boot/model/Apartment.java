@@ -23,71 +23,60 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Apartment {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	String id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int id;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
 	@ElementCollection
 	@Column(name = "start")
 	@MapKeyColumn(name = "end")
+	private Map<LocalDate, LocalDate> openDates;
 
-	Map<LocalDate, LocalDate> openDates;
-	
 	@OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
 	private List<Booking> bookings = new ArrayList<Booking>();
 
 	@Column(name = "price")
-	int price;
+	private int price;
 	@Column(name = "area")
-	int area;
+	private int area;
 	@Column(name = "rooms")
-	int rooms;
+	private int rooms;
 	@Column(name = "bathrooms")
-	int bathrooms;
-	String address;
-	String lessorId;
-
-	private static int counter;
-
-	public static int getNumOfInstances() {
-		return counter;
-	}
+	private int bathrooms;
+	private String address;
+	private String imgUrl;
+	private String lessorId;
 
 	public Apartment() {
 		super();
-		// counter++;
-		this.setId();
-//		this.openDates = new ArrayList<LocalDate>();
-
 	}
 
 	public Apartment(int price, int area, int rooms, int bathrooms, String address) {
 		super();
-		counter++;
-		this.setId();
 		this.price = price;
 		this.area = area;
 		this.rooms = rooms;
 		this.bathrooms = bathrooms;
 		this.address = address;
-
+		
 	}
 
-	public String getId() {
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId() {
-		String part = "";
-		if (Apartment.getNumOfInstances() < 10) {
-			part = "0";
-		}
-		this.id = "a" + part + Apartment.getNumOfInstances();
-
+	public void setId(int id) {
+		this.id = id;
 	}
-	
-	
 
 	public List<Booking> getBookings() {
 		return bookings;
@@ -157,9 +146,14 @@ public class Apartment {
 
 	@Override
 	public String toString() {
-		return "Apartment [id=" + id + ", lessorId=" + lessorId +
-		 ", openDates=" + openDates +
-				", price=" + price + ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address="
-				+ address + "]";
+		return "Apartment [id=" + id + ", openDates=" + openDates + ", bookings=" + bookings + ", price=" + price
+				+ ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address=" + address
+				+ ", imgUrl=" + imgUrl + ", lessorId=" + lessorId + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Apartment [id=" + id + ", lessorId=" + lessorId + ", openDates=" + openDates + ", price=" + price
+//				+ ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address=" + address + "]";
+//	}
 }

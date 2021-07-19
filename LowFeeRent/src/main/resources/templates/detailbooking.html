@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Welcome to my Spring Boot Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<title>Welcome to our site</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+
+		<div class="w3-card-4 w3-display-middle" style="width: 40%"
+			th:each="booking:${bookingfromController}">
+			<header class="w3-container w3-light-grey">
+				<h3 th:text="'Booking ID ' +${booking.id}"></h3>
+
+			</header>
+			<div class="w3-container">
+
+
+				<br>
+
+				<p>
+					<span th:text="'checkin: ' +${booking.checkin}"></span> <span
+						th:text="', checkout: ' +${booking.checkout}"></span> <span></span>
+					<span></span>
+				</p>
+				<p>
+					<span th:text="'nights: ' +${booking.nights}"></span> <span
+						th:text="', total amount: ' +${booking.amount}+'€'"></span>
+				</p>
+				<p>
+					<span th:text="'renterId: ' +${booking.person.id}"></span> <span
+						th:text="', name: ' +${booking.person.name}"></span> <span
+						th:text="', surname: ' +${booking.person.surname}"></span>
+				</p>
+
+				<p th:text="'apartment address: ' +${booking.apartment.address}"></p>
+				<img th:src="@{../img/a/}+${booking.apartment.id % 33}+@{.jpg}"
+					alt="Apartment Image" style="width: 75%">
+					<img th:src="@{../img/a/}+${apartment.id % 33}+@{.jpg}"
+					alt="Apartment Image" style="width: 100%">
+
+				<p th:text="'openDates: ' +${booking.apartment.openDates}"></p>
+				<p></p>
+				<span th:text="'area: ' +${booking.apartment.area}+' m2'"></span> <span
+					th:text="', rooms: ' +${booking.apartment.rooms}"></span> <span
+					th:text="', bathrooms: ' +${booking.apartment.bathrooms}"></span>
+
+
+
+				<hr>
+				<div class="w3-container w3-center">
+					<a th:href="@{deletebooking(id=${booking.id})}"
+						class="w3-button w3-red w3-center">Delete</a> <a
+						th:href="@{updatebooking(id=${booking.id})}"
+						class="w3-button w3-blue">Update</a>
+
+					<hr>
+				</div>
+			</div>
+			<button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+		</div>
+
+	</div>
+
+
+</body>
+</html>

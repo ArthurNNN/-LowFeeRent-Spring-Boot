@@ -35,6 +35,7 @@
 				<td>rooms</td>
 				<td>bathrooms</td>
 				<td>address</td>
+				<td>imgUrl</td>
 				<td>operations</td>
 			</tr>
 			<tr th:each="apartment:${apartmentList}">
@@ -46,6 +47,8 @@
 				<td th:text="${apartment.rooms}"></td>
 				<td th:text="${apartment.bathrooms}"></td>
 				<td th:text="${apartment.address}"></td>
+				<td><a th:text="${apartment.imgUrl}"
+					th:href="${apartment.imgUrl}"></a></td>
 
 				<td><a th:href="@{deleteApartment(id=${apartment.id})}"
 					class="w3-button w3-red">Delete</a> <a
