@@ -100,7 +100,7 @@ public class BookingController {
 		System.out.print("\n---------------- Adding 10 bookings: ----------------");
 		int n = 1;
 
-		while (n <= 3) {
+		while (n <= 5) {
 
 			int personIdRandom = Utils.randRange(1, (int) personRepository.count());
 			int apartmentIdRandom = Utils.randRange(1, (int) apartmentRepository.count());
@@ -116,7 +116,7 @@ public class BookingController {
 				LocalDate chekingDate = firstDateHM.getKey();
 				LocalDate chekoutDate = firstDateHM.getValue();
 				
-				openDates.remove(chekingDate);
+//				openDates.remove(chekingDate);
 
 				Booking booking = new Booking( personRandom.get(), apartmentRandom.get(),
 						chekingDate, chekoutDate, Utils.randRange(8, 10) * 10);

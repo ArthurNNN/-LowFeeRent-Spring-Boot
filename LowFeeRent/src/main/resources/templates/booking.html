@@ -37,12 +37,12 @@
 				<tr th:each="booking:${bookingListfromControllerAndDB}">
 					<td th:text="${booking.id}"></td>
 					<td><a th:text="${booking.person.id}"
-						th:href="@{../person/detailPerson(id=${booking.id})}"
+						th:href="@{../person/detailPerson(id=${booking.person.id})}"
 						target="_blank" class="w3-button w3-blue"></a></td>
-					<!-- 					<td th:text="${booking.apartment.id}"></td> -->
 					<td><a th:text="${booking.apartment.id}"
-						th:href="@{../apartment/detailApartment(id=${booking.id})}"
+						th:href="@{../apartment/detailApartment(id=${booking.apartment.id})}"
 						target="_blank" class="w3-button w3-green"></a></td>
+
 					<td th:text="${booking.checkin}"></td>
 					<td th:text="${booking.checkout}"></td>
 					<td th:text="${booking.nights}"></td>
