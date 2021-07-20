@@ -27,22 +27,17 @@
 
 			</header>
 			<div class="w3-container">
-				<!-- 		<p>1 new friend request</p> -->
-				<!-- 		<p></p> -->
-				<!-- 		<hr> -->
-				<!-- 		<img src="/img/img_avatar.jpg" alt="Avatar" -->
-				<!-- 			class="w3-left w3-circle w3-margin-right" style="width: 60px"> -->
-				<!-- 		<p>CEO at Mighty Schools. Marketing and Advertising. Seeking a new -->
-				<!-- 			job and new opportunities.</p> -->
-
-				<br>
 				<p th:text="'address: ' +${apartment.address}"></p>
-				<img th:src="@{../img/a/}+${apartment.id % 33}+@{.jpg}"
-					alt="Apartment Image" style="width: 100%">
+				<img th:src="${apartment.imgUrl}" alt="Apartment Image"
+					style="width: 100%">
+									<p th:text="'imgUrl: ' +${apartment.imgUrl}"></p>
 				<p th:text="'openDates: ' +${apartment.openDates}"></p>
-				<p th:text="'area: ' +${apartment.area}"></p>
-				<p th:text="'rooms: ' +${apartment.rooms}"></p>
-				<p th:text="'bathrooms: ' +${apartment.bathrooms}"></p>
+				<p >
+					<span th:text="'area: ' +${apartment.area}"></span> 
+					<span th:text="'m2, rooms: ' +${apartment.rooms}"></span> 
+					<span th:text="', bathrooms: ' +${apartment.bathrooms}"></span>
+				</p>
+
 				<!-- 				<p th:text="'personId: ' +${apartment.personId}"></p> -->
 
 				<hr>

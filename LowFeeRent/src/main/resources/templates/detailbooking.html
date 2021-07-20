@@ -47,10 +47,9 @@
 				</p>
 
 				<p th:text="'apartment address: ' +${booking.apartment.address}"></p>
-				<img th:src="@{../img/a/}+${booking.apartment.id % 33}+@{.jpg}"
+				<img th:src="@{../img/a/}+${booking.apartment.id % 32}+@{.jpg}"
 					alt="Apartment Image" style="width: 75%">
-					<img th:src="@{../img/a/}+${apartment.id % 33}+@{.jpg}"
-					alt="Apartment Image" style="width: 100%">
+
 
 				<p th:text="'openDates: ' +${booking.apartment.openDates}"></p>
 				<p></p>

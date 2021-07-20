@@ -53,13 +53,54 @@ public class BookingController {
 
 		return "booking.html";
 	}
+	
+	@RequestMapping("/fillinlessors")
+	public String fillInLessors(Model boxToView) {
+		
+		System.out.print("\n---------------- Fill In Lessors to Apartments: ----------------");
+		int n = 1;
+
+		while (n <= 10) {
+
+			int personIdRandom = Utils.randRange(1, (int) personRepository.count());
+			int apartmentIdRandom = Utils.randRange(1, (int) apartmentRepository.count());
+			
+			Optional<Person> personRandom = personRepository
+					.findById(personIdRandom);
+			Optional<Apartment> apartmentRandom = apartmentRepository
+					.findById(apartmentIdRandom);		
+
+			if (apartmentRandom.isPresent() && personRandom.isPresent()) {
+				Map<LocalDate, LocalDate> openDates = apartmentRandom.get().getOpenDates();
+				Map.Entry<LocalDate, LocalDate> firstDateHM = openDates.entrySet().stream().findAny().get();
+				LocalDate chekingDate = firstDateHM.getKey();
+				LocalDate chekoutDate = firstDateHM.getValue();
+				
+				openDates.remove(chekingDate);
+
+				Booking booking = new Booking( personRandom.get(), apartmentRandom.get(),
+						chekingDate, chekoutDate, Utils.randRange(8, 10) * 10);
+				
+				booking = bookingRepository.save(booking);
+				System.out.print("\n#" + n + " ");
+				System.out.print(booking);
+				n++;
+			}
+		}
+
+		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
+
+		return "redirect:/apartment/allApartments";
+	}
+
+
 
 	@RequestMapping("/fillInBookings")
 	public String fillInBookings(Model boxToView) {
 		System.out.print("\n---------------- Adding 10 bookings: ----------------");
 		int n = 1;
 
-		while (n <= 10) {
+		while (n <= 3) {
 
 			int personIdRandom = Utils.randRange(1, (int) personRepository.count());
 			int apartmentIdRandom = Utils.randRange(1, (int) apartmentRepository.count());

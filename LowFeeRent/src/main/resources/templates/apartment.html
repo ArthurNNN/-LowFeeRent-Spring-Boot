@@ -13,6 +13,7 @@
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet"	href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css"> -->
 <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" />
 
 <body>
@@ -28,34 +29,37 @@
 		<table class="w3-table-all" id="myTable">
 			<tr class="w3-black w3-hover-teal">
 				<td>id</td>
-				<td>lessorId</td>
-				<td>openDates</td>
+				<td style="width: 10%;">img</td>
+
 				<td>price</td>
 				<td>area</td>
 				<td>rooms</td>
 				<td>bathrooms</td>
 				<td>address</td>
-				<td>imgUrl</td>
-				<td>operations</td>
+<!-- 				<td>imgUrl</td> -->
+				<td>lessorId</td>
+				<td>CRUD operations</td>
 			</tr>
 			<tr th:each="apartment:${apartmentList}">
 				<td th:text="${apartment.id}"></td>
-				<td th:text="${apartment.lessorId}"></td>
-				<td th:text="${apartment.openDates}"></td>
+				<td><div class="w3-col m6">
+						<img th:src="${apartment.imgUrl}" alt="Apartment Image"
+							style="width: 100%;">
+					</div></td>
+
 				<td th:text="${apartment.price}"></td>
 				<td th:text="${apartment.area}"></td>
 				<td th:text="${apartment.rooms}"></td>
 				<td th:text="${apartment.bathrooms}"></td>
 				<td th:text="${apartment.address}"></td>
-				<td><a th:text="${apartment.imgUrl}"
-					th:href="${apartment.imgUrl}"></a></td>
-
-				<td><a th:href="@{deleteApartment(id=${apartment.id})}"
-					class="w3-button w3-red">Delete</a> <a
-					th:href="@{detailApartment(id=${apartment.id})}"
-					class="w3-button w3-teal">Detail</a> <a
+<!-- 				<td><a th:text="${apartment.imgUrl}"					th:href="${apartment.imgUrl}"></a></td> -->
+				<td th:text="${apartment.lessorId}"></td>
+				<td><a th:href="@{detailApartment(id=${apartment.id})}"
+					class="w3-button w3-teal"><i class="fa fa-eye"></i> View</a> <a
 					th:href="@{updateApartment(id=${apartment.id})}"
-					class="w3-button w3-blue">Update</a></td>
+					class="w3-button w3-blue"><i class="fa fa-edit"></i> Edit</a> <a
+					th:href="@{deleteApartment(id=${apartment.id})}"
+					class="w3-button w3-red"><i class="fa fa-trash"></i> Delete</a></td>
 
 			</tr>
 		</table>

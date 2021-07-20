@@ -27,7 +27,7 @@ public class PersonController {
 		return "person.html";
 	}
 
-	@RequestMapping("/fillIn10Persons")
+	@RequestMapping("/fillInPersons")
 	public String fillInPersons(Model boxToView) {
 
 		Faker faker = new Faker();

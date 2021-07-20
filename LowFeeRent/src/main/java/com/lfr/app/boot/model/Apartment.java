@@ -58,7 +58,7 @@ public class Apartment {
 		this.area = area;
 		this.rooms = rooms;
 		this.bathrooms = bathrooms;
-		this.address = address;
+		this.address = address ;
 		
 	}
 
@@ -151,9 +151,5 @@ public class Apartment {
 				+ ", imgUrl=" + imgUrl + ", lessorId=" + lessorId + "]";
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Apartment [id=" + id + ", lessorId=" + lessorId + ", openDates=" + openDates + ", price=" + price
-//				+ ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address=" + address + "]";
-//	}
+
 }

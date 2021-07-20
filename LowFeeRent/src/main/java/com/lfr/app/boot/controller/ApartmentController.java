@@ -16,6 +16,7 @@ import com.github.javafaker.Faker;
 import com.lfr.app.boot.model.Apartment;
 import com.lfr.app.boot.utils.Utils;
 import com.lfr.app.repository.ApartmentRepository;
+import com.lfr.app.repository.PersonRepository;
 
 @Controller
 @RequestMapping("/apartment")
@@ -24,7 +25,7 @@ public class ApartmentController {
 	@Autowired
 	ApartmentRepository apartmentRepository;
 
-	@RequestMapping("/fillin32apartments")
+	@RequestMapping("/fillinapartments")
 	public String fillInApartments(Model boxToView) {
 		apartmentRepository = fillInRandomApt(apartmentRepository, 32);
 
@@ -39,11 +40,6 @@ public class ApartmentController {
 		while (n <= qt) {
 			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
-			System.out.println(apartment);
-			
-			apartment.setImgUrl("../a/" + (apartment.id % 33) + ".jpg");
-			System.out.println(apartment);
-			
 
 			Map<LocalDate, LocalDate> datesMap = new HashMap<LocalDate, LocalDate>();
 			datesMap.put(LocalDate.of(2021, Utils.randRange(1, 3), Utils.randRange(1, 28)),
@@ -53,10 +49,18 @@ public class ApartmentController {
 			datesMap.put(LocalDate.of(2021, Utils.randRange(9, 10), Utils.randRange(1, 28)),
 					LocalDate.of(2021, Utils.randRange(10, 13), Utils.randRange(1, 28)));
 
-			System.out.println(datesMap);
+//			System.out.println(datesMap);
 			apartment.setOpenDates(datesMap);
 
 			apartmentRepository.save(apartment);
+			int idMod = apartment.getId() % 32;
+			if (idMod != 0) {
+				apartment.setImgUrl("../img/a/" + idMod + ".jpg");
+			} else {
+				apartment.setImgUrl("../img/a/" + 32 + ".jpg");
+			}
+			apartmentRepository.save(apartment);
+//			System.out.println(apartment);
 			n++;
 		}
 		return apartmentRepository;
