@@ -23,19 +23,11 @@
 		<div class="w3-card-4 w3-display-middle" style="width: 40%"
 			th:each="booking:${bookingfromController}">
 			<header class="w3-container w3-light-grey">
-				<h3 th:text="'Booking ID ' +${booking.id}"></h3>
-
+				<h3
+					th:text="'Booking id' +${booking.id}+': checkin ' +${booking.checkin}+ ', checkout ' +${booking.checkout}"></h3>
 			</header>
 			<div class="w3-container">
 
-
-				<br>
-
-				<p>
-					<span th:text="'checkin: ' +${booking.checkin}"></span> <span
-						th:text="', checkout: ' +${booking.checkout}"></span> <span></span>
-					<span></span>
-				</p>
 				<p>
 					<span th:text="'nights: ' +${booking.nights}"></span> <span
 						th:text="', total amount: ' +${booking.amount}+'€'"></span>
@@ -46,9 +38,9 @@
 						th:text="', surname: ' +${booking.person.surname}"></span>
 				</p>
 
-				<p th:text="'apartment address: ' +${booking.apartment.address}"></p>
+				<p th:text="'address: ' +${booking.apartment.address}"></p>
 				<img th:src="@{../img/a/}+${booking.apartment.id % 32}+@{.jpg}"
-					alt="Apartment Image" style="width: 75%">
+					alt="Apartment Image" style="width: 100%">
 
 
 				<p th:text="'openDates: ' +${booking.apartment.openDates}"></p>
@@ -61,15 +53,19 @@
 
 				<hr>
 				<div class="w3-container w3-center">
-					<a th:href="@{deletebooking(id=${booking.id})}"
-						class="w3-button w3-red w3-center">Delete</a> <a
+					<a th:href="@{allBookings}" class="w3-button w3-green"><i
+						class="fa fa-arrow-left"></i> Back</a> <a
 						th:href="@{updatebooking(id=${booking.id})}"
-						class="w3-button w3-blue">Update</a>
+						class="w3-button w3-blue"><i class="fa fa-edit"></i> Edit</a> <a
+						th:href="@{deletebooking(id=${booking.id})}"
+						class="w3-button w3-red w3-center"><i class="fa fa-trash"></i>
+						Delete</a>
 
-					<hr>
+
 				</div>
+				<hr>
 			</div>
-			<button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+			<!-- 			<button class="w3-button w3-block w3-dark-grey">+ Connect</button> -->
 		</div>
 
 	</div>

@@ -23,6 +23,8 @@ public class Person {
 	private String name;
 	private String surname;
 	private String email;
+	private String password;
+	private String imgUrl;
 	
 
 	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
@@ -31,13 +33,13 @@ public class Person {
 //	private BankAccount bankAccount;
 
 	public Person() {
-		super();
+//		super();
 	}
 
 	public Person(String name, String surname, String email
 	// , BankAccount bankAccount
 	) {
-		super();
+//		super();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;

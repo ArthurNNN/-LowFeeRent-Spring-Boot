@@ -57,7 +57,7 @@ public class Request {
 	
 
 	public Request(Integer priceMax, Integer areaMin, Integer roomsMin, Integer bathroomsMin) {
-		super();
+//		super();
 		this.setId();
 		this.priceMax = priceMax;
 		this.areaMin = areaMin;
@@ -67,7 +67,7 @@ public class Request {
 
 	public Request(LocalDate checkin, LocalDate checkout, Integer priceMax, Integer areaMin, Integer roomsMin,
 			Integer bathroomsMin) {
-		super();
+//		super();
 		this.setId();
 		this.checkin = checkin;
 		this.checkout = checkout;

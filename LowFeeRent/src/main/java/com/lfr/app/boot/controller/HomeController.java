@@ -1,5 +1,6 @@
 package com.lfr.app.boot.controller;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +29,17 @@ public class HomeController {
 	RequestRepository requestRepository;
 
 	@RequestMapping("/")
-	public String home(Model boxToView, Request req) {
+	public String home(Principal prin, Model boxToView, Request req) {
+
+		if (prin == null) {
+			boxToView.addAttribute("currentuser", "noBodyHome");
+		} else {
+			boxToView.addAttribute("currentuser", prin.getName());
+		}
 
 		if (isFirstRender) {
-			apartmentRepository = ApartmentController.fillInRandomApt(apartmentRepository,32);
-			
+			apartmentRepository = ApartmentController.fillInRandomApt(apartmentRepository, 32);
+
 			isFirstRender = false;
 		}
 
@@ -50,7 +57,6 @@ public class HomeController {
 		return "lowfeerent";
 	}
 
-	
 	@RequestMapping("/admin")
 	public String getAdminConsole(Model boxToView) {
 

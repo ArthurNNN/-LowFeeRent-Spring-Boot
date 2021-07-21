@@ -35,14 +35,29 @@
 
 	<!-- Content Section -->
 	<section layout:fragment="content">
-		<p>This is filled by the content template.</p>
+
+
+		<div class="w3-container w3-display-middle">
+			<h1>Welcome to LowFeeRent Admin Console!</h1>
+			<p>Enjoy our site ...</p>
+		</div>
+
+		<div class="w3-panel w3-teal w3-center w3-display-container">
+			<h1 th:inline="text">Hello
+				[[${#httpServletRequest.remoteUser}]]!</h1>
+			<form th:action="@{/logout}" method="post">
+				<input class="w3-button" type="submit" value="Sign Out" />
+			</form>
+
+		</div>
+
 	</section>
 
 
 	<!-- Footer -->
 	<footer>
 		<div class="footer">
-			<p>2021 Java Spring with Layout Thymeleaf. All rights reserved.</p>
+			<p>2021 LowFeeRent. All rights reserved.</p>
 		</div>
 	</footer>
 

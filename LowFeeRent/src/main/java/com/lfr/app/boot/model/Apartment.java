@@ -49,11 +49,11 @@ public class Apartment {
 	private String lessorId;
 
 	public Apartment() {
-		super();
+//		super();
 	}
 
 	public Apartment(int price, int area, int rooms, int bathrooms, String address) {
-		super();
+//		super();
 		this.price = price;
 		this.area = area;
 		this.rooms = rooms;

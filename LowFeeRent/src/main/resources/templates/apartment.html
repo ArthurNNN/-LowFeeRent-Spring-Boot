@@ -22,9 +22,9 @@
 	<div layout:fragment="content">
 
 		<div class="w3-container w3-margin">
-			<p>Apartments table</p>
-			<input type="text" id="myInput" onkeyup="myFunction()"
-				placeholder="Search for anything.." title="Type in a name">
+			<h2>Table of apartments</h2>
+			<input type="text" id="myInput" onkeyup="onSearch()"
+				placeholder="Search for anything.." title="Type in anything">
 		</div>
 		<table class="w3-table-all" id="myTable">
 			<tr class="w3-black w3-hover-teal">
@@ -36,7 +36,7 @@
 				<td>rooms</td>
 				<td>bathrooms</td>
 				<td>address</td>
-<!-- 				<td>imgUrl</td> -->
+				<!-- 				<td>imgUrl</td> -->
 				<td>lessorId</td>
 				<td>CRUD operations</td>
 			</tr>
@@ -52,7 +52,7 @@
 				<td th:text="${apartment.rooms}"></td>
 				<td th:text="${apartment.bathrooms}"></td>
 				<td th:text="${apartment.address}"></td>
-<!-- 				<td><a th:text="${apartment.imgUrl}"					th:href="${apartment.imgUrl}"></a></td> -->
+				<!-- 				<td><a th:text="${apartment.imgUrl}"					th:href="${apartment.imgUrl}"></a></td> -->
 				<td th:text="${apartment.lessorId}"></td>
 				<td><a th:href="@{detailApartment(id=${apartment.id})}"
 					class="w3-button w3-teal"><i class="fa fa-eye"></i> View</a> <a
@@ -63,29 +63,6 @@
 
 			</tr>
 		</table>
-		<script>
-			function myFunction() {
-				var input, filter, table, tr, td, cell, i, j;
-				input = document.getElementById("myInput");
-				filter = input.value.toUpperCase();
-				table = document.getElementById("myTable");
-				tr = table.getElementsByTagName("tr");
-				for (i = 1; i < tr.length; i++) {
-					// Hide the row initially.
-					tr[i].style.display = "none";
-
-					td = tr[i].getElementsByTagName("td");
-					for (var j = 0; j < td.length; j++) {
-						cell = tr[i].getElementsByTagName("td")[j];
-						if (cell) {
-							if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
-								tr[i].style.display = "";
-								break;
-							}
-						}
-					}
-				}
-			}
-		</script>
 	</div>
+	<script th:src="@{/js/search.js}"></script>
 </html>

@@ -30,27 +30,29 @@
 				<p th:text="'address: ' +${apartment.address}"></p>
 				<img th:src="${apartment.imgUrl}" alt="Apartment Image"
 					style="width: 100%">
-									<p th:text="'imgUrl: ' +${apartment.imgUrl}"></p>
+				<p th:text="'imgUrl: ' +${apartment.imgUrl}"></p>
 				<p th:text="'openDates: ' +${apartment.openDates}"></p>
-				<p >
-					<span th:text="'area: ' +${apartment.area}"></span> 
-					<span th:text="'m2, rooms: ' +${apartment.rooms}"></span> 
-					<span th:text="', bathrooms: ' +${apartment.bathrooms}"></span>
+				<p>
+					<span th:text="'area: ' +${apartment.area}"></span> <span
+						th:text="'m2, rooms: ' +${apartment.rooms}"></span> <span
+						th:text="', bathrooms: ' +${apartment.bathrooms}"></span>
 				</p>
 
 				<!-- 				<p th:text="'personId: ' +${apartment.personId}"></p> -->
 
 				<hr>
 				<div class="w3-container w3-center">
-					<a th:href="@{deleteapartment(id=${apartment.id})}"
-						class="w3-button w3-red w3-center">Delete</a> <a
+					<a th:href="@{allApartments}" class="w3-button w3-green"><i
+						class="fa fa-arrow-left"></i> Back</a> <a
 						th:href="@{updateapartment(id=${apartment.id})}"
-						class="w3-button w3-blue">Update</a>
-
+						class="w3-button w3-blue"><i class="fa fa-edit"></i> Edit</a> <a
+						th:href="@{deleteapartment(id=${apartment.id})}"
+						class="w3-button w3-red w3-center"><i class="fa fa-trash"></i>
+						Delete</a>
 					<hr>
 				</div>
 			</div>
-			<button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+			<!-- 			<button class="w3-button w3-block w3-dark-grey">+ Connect</button> -->
 		</div>
 
 	</div>

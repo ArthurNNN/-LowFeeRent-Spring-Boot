@@ -17,10 +17,11 @@
 
 <body>
 	<div layout:fragment="content">
-		<div class="w3-panel w3-padding-32">
-			<h1>Spring Boot with booking Iterable List from BD H2</h1>
-			<h3>Table of bookings</h3>
-
+		<div class="w3-container w3-margin">
+			<h2>Table of bookings</h2>
+			<input type="text" id="myInput" onkeyup="onSearch()"
+				placeholder="Search for anything.." title="Type in anything">
+		</div>
 			<table class="w3-table-all">
 
 				<tr class="w3-black w3-hover-teal">
@@ -58,5 +59,6 @@
 				</tr>
 			</table>
 		</div>
-	</div>
+
+		<script th:src="@{/js/search.js}"></script>
 </html>

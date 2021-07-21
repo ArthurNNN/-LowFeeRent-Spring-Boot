@@ -44,12 +44,12 @@ public class Booking {
 	int amount;
 
 	public Booking() {
-		super();
+//		super();
 
 	}
 
 	public Booking(Person person, Apartment apt, LocalDate checkin, LocalDate checkout, int amount) {
-		super();
+//		super();
 
 		this.checkin = checkin;
 		this.checkout = checkout;

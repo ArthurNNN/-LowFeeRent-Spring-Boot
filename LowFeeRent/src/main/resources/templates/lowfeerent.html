@@ -33,10 +33,68 @@
 		<a href="#cities" class="w3-bar-item w3-button w3-mobile">Cities</a> <a
 			href="#about" class="w3-bar-item w3-button w3-mobile">About</a> <a
 			href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a> <a
-			href="#book" class="w3-bar-item w3-button w3-red w3-mobile">Book
-			Now</a> <a href="/admin"
-			class="w3-bar-item w3-button w3-right w3-red w3-red w3-mobile">Admin
-			Console</a>
+			href="#book" class="w3-bar-item w3-button w3-red w3-mobile">Book Now</a>
+
+		<div class="topnav" id="myTopnav">
+			<div th:if="${currentuser} == 'noBodyHome'"> 
+				<a onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-mobile w3-right">Log in</a> 
+				<a	href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i> </a>
+			</div>
+			<div th:if="${currentuser} != 'noBodyHome'">
+					<a th:href="@{admin}" class="w3-bar-item w3-button w3-mobile">Welcome	[[${#httpServletRequest.remoteUser}]]!</a> 
+			<form th:action="@{/logout}" method="post">
+				<input class="w3-button" type="submit" value="Sign Out" />
+			</form>
+			<a	href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i> </a>
+			</div>
+
+		</div>
+
+
+
+		<!-- Login form -->
+		<div id="id01" class="w3-modal">
+			<div class="w3-modal-content w3-card-4 w3-animate-zoom"
+				style="max-width: 600px">
+
+				<!-- Login form Image Header -->
+				<div class="w3-center">
+					<Br> <span
+						onclick="document.getElementById('id01').style.display='none'"
+						class="w3-button w3-xlarge w3-transparent w3-display-topright"
+						title="Close Modal">x</span>
+					<h2>Hello</h2>
+				</div>
+
+				<!-- Login form Body Username&Password -->
+				<form class="w3-container" th:action="@{/login}" method="post">
+					<div class="w3-section">
+						<label><b>Username</b></label> <input
+							class="w3-input w3-border w3-margin-bottom" type="text"
+							placeholder="Enter Username" name="username" required> <label>
+							<b>Password</b>
+						</label> <input class="w3-input w3-border" type="password"
+							placeholder="Enter Password" name="password" required>
+						<button class="w3-button w3-block w3-green w3-section w3-padding"
+							type="submit" value="Login">Log in</button>
+
+
+						<input class="w3-check w3-margin-top" type="checkbox"
+							checked="checked"> Remember me
+					</div>
+				</form>
+
+				<!-- Login form footer Forgot Password-->
+				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+					<button
+						onclick="document.getElementById('id01').style.display='none'"
+						type="button" class="w3-button w3-red">Cancel</button>
+					<span class="w3-right w3-padding w3-hide-small">Forgot <a
+						href="#">password?</a></span>
+				</div>
+
+			</div>
+		</div>
 
 	</div>
 	<!-- Header -->
@@ -286,9 +344,9 @@
 				<p>If you have any questions, do not hesitate to ask them.</p>
 				<i class="fa fa-map-marker w3-text-red" style="width: 30px"></i>
 				Chicago, US<br> <i class="fa fa-phone w3-text-red"
-					style="width: 30px"></i> Phone: +00 151515<br> <i
+					style="width: 30px"></i> Phone: +34 656-685-758<br> <i
 					class="fa fa-envelope w3-text-red" style="width: 30px"> </i> Email:
-				mail@mail.com<br>
+				support@fakemail.com<br>
 				<form action="https://www.w3schools.com/action_page.php"
 					target="_blank">
 					<p>
@@ -313,7 +371,7 @@
 			<!-- End page content -->
 		</div>
 	</div>
-	
+
 	<!-- Footer -->
 	<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
 		<h5>Find Us On</h5>
@@ -362,42 +420,37 @@
 			});
 		}
 	</script>
-<!-- 	<script -->
-<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Ql4vFOhb7hCuDESjFeMzeGOUu_4VZ-Y&callback=initMap&libraries=&v=weekly" -->
-<!-- 		async></script> -->
+	<!-- 	<script -->
+	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Ql4vFOhb7hCuDESjFeMzeGOUu_4VZ-Y&callback=initMap&libraries=&v=weekly" -->
+	<!-- 		async></script> -->
 
-	<script type="text/javascript">
-		// 	const submit_filterform = () => {
+	<!-- 	<script type="text/javascript"> -->
+	// const submit_filterform = () => { // var price =
+	document.getElementsByName('priceMax').value; // var rooms =
+	document.getElementsByName('roomsMin').value; // console.log(priceMax);
+	// console.log(roomsMin); // } // function myFunction() { // var input,
+	filter, table, tr, td, cell, i, j; // input =
+	document.getElementById("myInput"); // filter =
+	input.value.toUpperCase(); // table =
+	document.getElementById("myTable"); // tr =
+	table.getElementsByTagName("tr"); // for (i = 1; i < tr.length; i++) {
+	// // Hide the row initially. // tr[i].style.display = "none"; // td =
+	tr[i].getElementsByTagName("td"); // for (var j = 0; j < td.length;
+	j++) { // cell = tr[i].getElementsByTagName("td")[j]; // if (cell) { //
+	if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) { //
+	tr[i].style.display = ""; // break; // } // } // } // } // }
+	<!-- 	</script> -->
 
-		// 		var price = document.getElementsByName('priceMax').value;
-		// 		  var rooms = document.getElementsByName('roomsMin').value;
-		// 		  console.log(priceMax);
-		// 		  console.log(roomsMin);
 
-		// 	}
-
-		// 		function myFunction() {
-		// 			var input, filter, table, tr, td, cell, i, j;
-		// 			input = document.getElementById("myInput");
-		// 			filter = input.value.toUpperCase();
-		// 			table = document.getElementById("myTable");
-		// 			tr = table.getElementsByTagName("tr");
-		// 			for (i = 1; i < tr.length; i++) {
-		// 				// Hide the row initially.
-		// 				tr[i].style.display = "none";
-
-		// 				td = tr[i].getElementsByTagName("td");
-		// 				for (var j = 0; j < td.length; j++) {
-		// 					cell = tr[i].getElementsByTagName("td")[j];
-		// 					if (cell) {
-		// 						if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		// 							tr[i].style.display = "";
-		// 							break;
-		// 						}
-		// 					}
-		// 				}
-		// 			}
-		// 		}
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
 	</script>
 
 	<!--

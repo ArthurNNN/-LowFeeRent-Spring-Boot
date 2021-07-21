@@ -19,42 +19,49 @@
 
 	<div layout:fragment="content">
 
-		<div class="w3-panel w3-padding-32">
-			<h1>Spring Boot with Person Iterable List from BD H2</h1>
-			<h3>Table of person</h3>
 
-			<table class="w3-table-all">
-
-				<tr class="w3-black w3-hover-teal">
-
-					<td>id</td>
-					<td>name</td>
-					<td>surname</td>
-					<td>email</td>
-					<td>operations</td>
-					<!--	<td > bankAccount</td> -->
-
-				</tr>
-
-				<tr th:each="person:${personListfromControllerAndDB}">
-
-
-					<td th:text="${person.id}"></td>
-					<td th:text="${person.name}"></td>
-					<td th:text="${person.surname}"></td>
-					<td th:text="${person.email}"></td>
-					<!--	<td th:text="${person.bankAccount}"></td> -->
-
-					<td><a th:href="@{deletePerson(id=${person.id})}"
-						class="w3-button w3-red">Delete</a> <a
-						th:href="@{detailPerson(id=${person.id})}"
-						class="w3-button w3-teal">Detail</a> <a
-						th:href="@{updatePerson(id=${person.id})}"
-						class="w3-button w3-blue">Update</a></td>
-
-
-				</tr>
-			</table>
+		<div class="w3-container w3-margin">
+			<h2>Table of persons</h2>
+			<input type="text" id="myInput" onkeyup="onSearch()"
+				placeholder="Search for anything.." title="Type in anything">
 		</div>
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+				<td>id</td>
+				<td>name</td>
+				<td>surname</td>
+				<td>email</td>
+				<td>CRUD operations</td>
+				<!--	<td > bankAccount</td> -->
+
+			</tr>
+
+			<tr th:each="person:${personListfromControllerAndDB}">
+
+
+				<td th:text="${person.id}"></td>
+				<td th:text="${person.name}"></td>
+				<td th:text="${person.surname}"></td>
+				<td th:text="${person.email}"></td>
+				<!--	<td th:text="${person.bankAccount}"></td> -->
+
+				<td><a th:href="@{detailPerson(id=${person.id})}"
+					class="w3-button w3-teal"><i class="fa fa-eye"></i> View</a> <a
+					th:href="@{updatePerson(id=${person.id})}"
+					class="w3-button w3-blue"><i class="fa fa-edit"></i> Edit</a> <a
+					th:href="@{deletePerson(id=${person.id})}" class="w3-button w3-red"><i
+						class="fa fa-trash"></i> Delete</a></td>
+
+
+
+
+
+
+			</tr>
+		</table>
 	</div>
+
+	<script th:src="@{/js/search.js}"></script>
 </html>
