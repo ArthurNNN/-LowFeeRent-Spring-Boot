@@ -26,16 +26,7 @@
 			class="fa fa-bars"></i></a>
 	</div>
 
-	<script>
-		function myFunction() {
-			var x = document.getElementById("myTopnav");
-			if (x.className === "topnav") {
-				x.className += " responsive";
-			} else {
-				x.className = "topnav";
-			}
-		}
-	</script>
+
 
 
 
@@ -50,9 +41,8 @@
 			<div class="w3-center">
 				<Br> <span
 					onclick="document.getElementById('id01').style.display='none'"
-					class="w3-button w3-xlarge w3-transparent w3-display-topright"
-					title="Close Modal">x</span>
-					<h2>Hello</h2>
+					class="w3-button w3-xlarge w3-display-topright" title="Close Modal">x</span>
+				<h2>Hello</h2>
 			</div>
 
 			<!-- Login form Body Username&Password -->
@@ -66,7 +56,7 @@
 						placeholder="Enter Password" name="password" required>
 					<button class="w3-button w3-block w3-green w3-section w3-padding"
 						type="submit" value="Login">Log in</button>
-					
+
 
 					<input class="w3-check w3-margin-top" type="checkbox"
 						checked="checked"> Remember me
@@ -78,8 +68,8 @@
 				<button
 					onclick="document.getElementById('id01').style.display='none'"
 					type="button" class="w3-button w3-red">Cancel</button>
-				<span class="w3-right w3-padding w3-hide-small">Forgot <a
-					href="#">password?</a></span>
+				<span class="w3-right w3-padding w3-hide-small"><a href="#">Forgot
+						password?</a></span>
 			</div>
 
 		</div>
@@ -99,13 +89,22 @@
 	<!-- Footer -->
 	<footer>
 		<div class="footer">
-			<p>2021 Java Spring with Layout Thymeleaf. All rights reserved.</p>
+			<p>2021 LowFeeRent. All rights reserved.</p>
 		</div>
 	</footer>
 
 	<!-- Optional Section -->
 	<th:block layout:fragment="optional" />
-
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>
 </body>
 
 

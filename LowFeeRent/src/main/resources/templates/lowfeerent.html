@@ -33,24 +33,28 @@
 		<a href="#cities" class="w3-bar-item w3-button w3-mobile">Cities</a> <a
 			href="#about" class="w3-bar-item w3-button w3-mobile">About</a> <a
 			href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a> <a
-			href="#book" class="w3-bar-item w3-button w3-red w3-mobile">Book Now</a>
+			href="#book" class="w3-bar-item w3-button w3-mobile">Book Now</a>
 
 		<div class="topnav" id="myTopnav">
-			<div th:if="${currentuser} == 'noBodyHome'"> 
-				<a onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-mobile w3-right">Log in</a> 
-				<a	href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i> </a>
+			<div th:if="${currentuser} == 'noBodyHome'">
+				<a onclick="document.getElementById('id01').style.display='block'"
+					class="w3-bar-item w3-button w3-mobile w3-right">Log in</a> <a
+					href="javascript:void(0);" class="icon" onclick="myFunction()"><i
+					class="fa fa-bars"></i> </a>
 			</div>
 			<div th:if="${currentuser} != 'noBodyHome'">
-					<a th:href="@{admin}" class="w3-bar-item w3-button w3-mobile">Welcome	[[${#httpServletRequest.remoteUser}]]!</a> 
-			<form th:action="@{/logout}" method="post">
-				<input class="w3-button" type="submit" value="Sign Out" />
-			</form>
-			<a	href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i> </a>
+
+				<form th:action="@{/logout}" method="post">
+					<input class="w3-bar-item w3-button w3-mobile w3-right"
+						type="submit" value="Sign Out" />
+				</form>
+				<a th:href="@{admin}"
+					class="w3-bar-item w3-button w3-mobile w3-right">Welcome
+					[[${#httpServletRequest.remoteUser}]]!</a> <a
+					href="javascript:void(0);" class="icon" onclick="myFunction()"><i
+					class="fa fa-bars"></i> </a>
 			</div>
-
 		</div>
-
-
 
 		<!-- Login form -->
 		<div id="id01" class="w3-modal">
